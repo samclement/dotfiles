@@ -72,6 +72,9 @@ set winheight=5
 set winminheight=5
 set winheight=999
 
+" Use prettier for JS autoformatting
+autocmd FileType javascript set formatprg=prettier\ --stdin
+
 "HTML Editing
 set matchpairs+=<:>
 
