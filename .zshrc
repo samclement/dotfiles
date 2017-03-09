@@ -16,7 +16,8 @@ source  ~/powerlevel9k/powerlevel9k.zsh-theme
 POWERLEVEL9K_MODE='awesome-fontconfig'
 
 DEFAULT_USER="samclement"
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+#source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+plugins+=(zsh-nvm)
 
 POWERLEVEL9K_BATTERY_ICON=$'\u26A1'
 POWERLEVEL9K_BATTERY_VERBOSE=false
