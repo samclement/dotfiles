@@ -17,7 +17,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'endel/vim-github-colorscheme'
 " Awesome looking meta at bottom
 " Fugitive will help with git related stuff, and show branch on statusline
-Plug 'tpope/vim-fugitive' | Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 ""
 Plug 'vitalk/vim-simple-todo'
 
@@ -78,6 +79,8 @@ Plug 'ervandew/supertab'
 " ./install.py --tern-completer
 " Provides Async autocomplete with Tern
 Plug 'https://github.com/Shougo/deoplete.nvim'
+" Plug 'https://github.com/Shougo/neocomplete.vim'
+
 " IDE like code intelligence for Javascript
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 
@@ -103,7 +106,7 @@ let g:solarized_termcolors=256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
-" set background=dark
+set background=dark
 " Allow powerline symbols to show up
 let g:airline_powerline_fonts = 1
 
