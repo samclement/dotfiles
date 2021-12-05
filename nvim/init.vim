@@ -111,6 +111,7 @@ source ~/.config/nvim/plugins/dracula.vim
 source ~/.config/nvim/plugins/bufexplorer.vim
 source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/ag.vim
+source ~/.config/nvim/plugins/unimpaired.vim
 
 call plug#end()
 doautocmd User PlugLoaded
