@@ -31,7 +31,10 @@ set backup
 set backupdir=~/.local/share/nvim/backup//
 set updatetime=300 " Reduce time for highlighting other references
 set redrawtime=10000 " Allow more time for loading syntax on large files
+
+" Remove left column - might be able to remove after installing theme
 set foldcolumn=1
+set signcolumn=no
 
 "--------------------------------------------------------------------------
 " Key maps
@@ -89,3 +92,25 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+"--------------------------------------------------------------------------
+" Plugins
+"--------------------------------------------------------------------------
+
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(data_dir . '/plugins')
+
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/bufexplorer.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+
+call plug#end()
+doautocmd User PlugLoaded
+
