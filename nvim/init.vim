@@ -113,6 +113,7 @@ source ~/.config/nvim/plugins/nerdtree.vim
 source ~/.config/nvim/plugins/ag.vim
 source ~/.config/nvim/plugins/unimpaired.vim
 source ~/.config/nvim/plugins/surround.vim
+source ~/.config/nvim/plugins/commentary.vim
 
 call plug#end()
 doautocmd User PlugLoaded
