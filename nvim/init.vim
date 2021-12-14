@@ -115,6 +115,7 @@ source ~/.config/nvim/plugins/ack.vim
 source ~/.config/nvim/plugins/unimpaired.vim
 source ~/.config/nvim/plugins/surround.vim
 source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/coc.vim
 
 call plug#end()
 doautocmd User PlugLoaded
