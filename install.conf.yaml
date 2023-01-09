@@ -3,6 +3,7 @@
 - link:
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
+    ~/.config/fish: fish
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
