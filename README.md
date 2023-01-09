@@ -12,6 +12,11 @@ Creates symlinks to the dotfiles in this repo. Uses [dotbot](https://github.com/
 
 ## Install
 
-`./install`
-
+1. Install dotfiles: `./install`
+2. Install kitty: `curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin`
+3. Install fish: `brew install fish`
+4. Install `ack`: `brew install ack`
+5. Install `silver searcher`: `brew install the_silver_searcher`
+6. Install Fonts
+7. Launch `nvim` and run `:PlugInstall`
 
