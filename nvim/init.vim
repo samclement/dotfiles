@@ -11,7 +11,6 @@ set relativenumber
 set number
 set termguicolors
 set undofile
-set spell
 set title
 set ignorecase
 set smartcase
@@ -36,6 +35,14 @@ set redrawtime=10000 " Allow more time for loading syntax on large files
 " Remove left column - might be able to remove after installing theme
 set foldcolumn=1
 set signcolumn=no
+
+" Spell-check Markdown files and Git Commit Messages
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+
+" Enable dictionary auto-completion in Markdown files and Git Commit Messages
+autocmd FileType markdown setlocal complete+=kspell
+autocmd FileType gitcommit setlocal complete+=kspell
 
 "--------------------------------------------------------------------------
 " Key maps
