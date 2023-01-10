@@ -4,6 +4,7 @@
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
     ~/.config/fish: fish
+    ~/.tmux.conf: tmux/.tmux.conf
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
