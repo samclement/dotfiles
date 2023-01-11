@@ -1,9 +1,13 @@
 - clean: ['~']
-
 - link:
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
-    ~/.config/fish: fish
+    ~/.config/fish/config.fish: 
+        path: fish/config.fish
+        force: true
+    ~/.config/fish/functions/fish_user_key_bindings.fish: 
+        path: fish/functions/fish_user_key_bindings.fish
+        force: true
     ~/.tmux.conf: tmux/.tmux.conf
 
 - shell:
