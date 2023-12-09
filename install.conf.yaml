@@ -9,6 +9,7 @@
         path: fish/functions/fish_user_key_bindings.fish
         force: true
     ~/.tmux.conf: tmux/.tmux.conf
+    ~/.gitconfig: git/.gitconfig
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
