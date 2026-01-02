@@ -1,6 +1,7 @@
 - clean: ['~']
 - link:
     ~/.config/nvim: nvim
+    ~/.zshrc: zsh/.zshrc
     ~/.config/kitty: kitty
     ~/.config/fish/config.fish: 
         path: fish/config.fish
