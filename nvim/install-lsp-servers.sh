@@ -1,78 +1,52 @@
 #!/bin/bash
 # Install LSP servers for Neovim
 
-echo "🚀 Installing Language Servers..."
-echo ""
+set -e
 
-# Check if npm is available
-if ! command -v npm &> /dev/null; then
-    echo "❌ npm is not installed. Please install Node.js first."
-    exit 1
-fi
+echo "Installing LSP servers..."
 
 # TypeScript/JavaScript
-echo "📦 Installing TypeScript/JavaScript LSP..."
+echo "Installing typescript-language-server..."
 npm install -g typescript-language-server typescript
 
-# HTML & CSS
-echo "📦 Installing HTML/CSS LSP..."
+# HTML/CSS/JSON
+echo "Installing vscode-langservers-extracted (HTML, CSS, JSON, ESLint)..."
 npm install -g vscode-langservers-extracted
 
 # Python
-echo "🐍 Installing Python LSP..."
-if command -v pip &> /dev/null || command -v pip3 &> /dev/null; then
-    pip install pyright 2>/dev/null || pip3 install pyright
-else
-    echo "⚠️  pip not found, skipping Python LSP"
-fi
+echo "Installing pyright..."
+pip install --upgrade pyright
 
-# Lua (macOS)
-echo "🌙 Installing Lua LSP..."
-if command -v brew &> /dev/null; then
-    brew install lua-language-server
-else
-    echo "⚠️  Homebrew not found, skipping Lua LSP"
-    echo "   Install manually from: https://github.com/LuaLS/lua-language-server/releases"
-fi
+# Lua
+echo "Installing lua-language-server..."
+brew install lua-language-server
 
 # Go
-echo "🐹 Installing Go LSP..."
-if command -v go &> /dev/null; then
-    go install golang.org/x/tools/gopls@latest
-else
-    echo "⚠️  Go not found, skipping Go LSP"
-fi
+echo "Installing gopls..."
+go install golang.org/x/tools/gopls@latest
 
 # Java
-echo "☕ Installing Java LSP..."
-if command -v brew &> /dev/null; then
-    brew install jdtls
+echo "Installing jdtls..."
+brew install jdtls
+
+# Rust (if rustup is installed)
+if command -v rustup &> /dev/null; then
+    echo "Installing rust-analyzer..."
+    rustup component add rust-analyzer
 else
-    echo "⚠️  Homebrew not found, skipping Java LSP"
-    echo "   Install manually from: https://github.com/eclipse/eclipse.jdt.ls"
+    echo "Skipping rust-analyzer (rustup not installed)"
 fi
 
 echo ""
-echo "✅ Installation complete!"
+echo "✓ LSP servers installation complete!"
 echo ""
-echo "Installed language servers:"
+echo "Installed:"
+echo "  - typescript-language-server (JS/TS)"
+echo "  - vscode-langservers-extracted (HTML/CSS/JSON)"
+echo "  - pyright (Python)"
+echo "  - lua-language-server (Lua)"
+echo "  - gopls (Go)"
+echo "  - jdtls (Java)"
+echo "  - rust-analyzer (Rust, if rustup available)"
 echo ""
-for cmd in typescript-language-server vscode-html-language-server vscode-css-language-server pyright lua-language-server gopls jdtls; do
-    printf "  %-35s" "$cmd:"
-    if command -v $cmd &> /dev/null; then
-        echo "✓"
-    else
-        echo "✗"
-    fi
-done
-
-echo ""
-echo "🎉 Restart Neovim and open a file to test LSP features!"
-echo ""
-echo "Test LSP keybindings:"
-echo "  gd         - Go to definition"
-echo "  K          - Hover documentation"
-echo "  <leader>rn - Rename symbol"
-echo "  <leader>a  - Code actions"
-echo "  [g / ]g    - Navigate diagnostics"
-echo ""
+echo "Restart Neovim to use the language servers."
