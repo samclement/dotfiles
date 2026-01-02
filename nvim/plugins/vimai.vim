@@ -2,7 +2,7 @@ Plug 'madox2/vim-ai'
 
 let g:vim_ai_chat = {
 \   "options": {
-\       "model": "gpt-4",
+\       "model": "gpt-4o",
 \       "temperature": "0.2",
 \   },
 \}

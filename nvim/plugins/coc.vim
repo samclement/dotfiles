@@ -1,4 +1,4 @@
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -81,7 +81,12 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup my_coc
+  autocmd!
+  " Highlight symbol and references when holding the cursor
+  autocmd User CocNvimInit autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -146,7 +151,16 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" if exists('*coc#status')
+"   set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" endif
+augroup my_coc_statusline
+  autocmd!
+  autocmd User CocNvimInit if exists('*coc#status') |
+        \ let &statusline = '%{coc#status()}%{get(b:,"coc_current_function","")}' |
+        \ endif
+augroup END
 
 " Mappings for CoCList
 " Show all diagnostics.
