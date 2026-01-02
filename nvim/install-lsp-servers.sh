@@ -14,8 +14,11 @@ echo "Installing vscode-langservers-extracted (HTML, CSS, JSON, ESLint)..."
 npm install -g vscode-langservers-extracted
 
 # Python
+# Install pipx if you don't have it
+brew install pipx
+
 echo "Installing pyright..."
-pip install --upgrade pyright
+pipx install pyright
 
 # Lua
 echo "Installing lua-language-server..."
