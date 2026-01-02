@@ -79,6 +79,12 @@ _G.packer_plugins = {
     path = "/Users/Sam.Clement/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["actions-preview.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28plugins.actions-preview\frequire\0" },
+    loaded = true,
+    path = "/Users/Sam.Clement/.local/share/nvim/site/pack/packer/start/actions-preview.nvim",
+    url = "https://github.com/aznhe21/actions-preview.nvim"
+  },
   ["claude-code.nvim"] = {
     config = { "\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.claudecode\frequire\0" },
     loaded = true,
@@ -163,7 +169,7 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    config = { "\27LJ\2\n¨\1\0\0\6\0\t\0\0156\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\0015\4\5\0005\5\4\0=\5\6\0045\5\a\0=\5\b\4B\2\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\2\14highlight\0\vindent\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\npcall\0" },
+    config = { "\27LJ\2\n¡\3\0\0\a\0\15\0\0216\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\0015\4\5\0005\5\4\0=\5\6\0045\5\a\0005\6\b\0=\6\t\5=\5\n\0045\5\v\0=\5\f\0045\5\r\0=\5\14\4B\2\2\1K\0\1\0\fautotag\1\0\1\venable\1\vindent\1\0\1\venable\2\14highlight&additional_vim_regex_highlighting\1\2\0\0\rmarkdown\1\0\2&additional_vim_regex_highlighting\0\venable\2\21ensure_installed\1\0\6\21ensure_installed\0\fautotag\0\14highlight\0\vindent\0\17auto_install\2\17sync_install\1\1\14\0\0\15javascript\15typescript\btsx\bjsx\thtml\bcss\vpython\ago\trust\blua\bvim\rmarkdown\tjson\nsetup\28nvim-treesitter.configs\frequire\npcall\0" },
     loaded = true,
     path = "/Users/Sam.Clement/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -230,10 +236,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.nvim-cmp\frequire\0", "config", "nvim-cmp")
-time([[Config for nvim-cmp]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: vim-easy-align
 time([[Config for vim-easy-align]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.easyalign\frequire\0", "config", "vim-easy-align")
@@ -242,14 +248,18 @@ time([[Config for vim-easy-align]], false)
 time([[Config for simple-zoom.nvim]], true)
 try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.simplezoom\frequire\0", "config", "simple-zoom.nvim")
 time([[Config for simple-zoom.nvim]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\n+\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
+-- Config for: claude-code.nvim
+time([[Config for claude-code.nvim]], true)
+try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.claudecode\frequire\0", "config", "claude-code.nvim")
+time([[Config for claude-code.nvim]], false)
 -- Config for: telescope.nvim
 time([[Config for telescope.nvim]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.telescope\frequire\0", "config", "telescope.nvim")
 time([[Config for telescope.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n¡\3\0\0\a\0\15\0\0216\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\0015\4\5\0005\5\4\0=\5\6\0045\5\a\0005\6\b\0=\6\t\5=\5\n\0045\5\v\0=\5\f\0045\5\r\0=\5\14\4B\2\2\1K\0\1\0\fautotag\1\0\1\venable\1\vindent\1\0\1\venable\2\14highlight&additional_vim_regex_highlighting\1\2\0\0\rmarkdown\1\0\2&additional_vim_regex_highlighting\0\venable\2\21ensure_installed\1\0\6\21ensure_installed\0\fautotag\0\14highlight\0\vindent\0\17auto_install\2\17sync_install\1\1\14\0\0\15javascript\15typescript\btsx\bjsx\thtml\bcss\vpython\ago\trust\blua\bvim\rmarkdown\tjson\nsetup\28nvim-treesitter.configs\frequire\npcall\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\2\n1\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\22plugins.nvim-tree\frequire\0", "config", "nvim-tree.lua")
@@ -258,22 +268,22 @@ time([[Config for nvim-tree.lua]], false)
 time([[Config for vim-ai]], true)
 try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18plugins.vimai\frequire\0", "config", "vim-ai")
 time([[Config for vim-ai]], false)
--- Config for: claude-code.nvim
-time([[Config for claude-code.nvim]], true)
-try_loadstring("\27LJ\2\n2\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\23plugins.claudecode\frequire\0", "config", "claude-code.nvim")
-time([[Config for claude-code.nvim]], false)
--- Config for: nvim-treesitter
-time([[Config for nvim-treesitter]], true)
-try_loadstring("\27LJ\2\n¨\1\0\0\6\0\t\0\0156\0\0\0006\2\1\0'\3\2\0B\0\3\3\14\0\0\0X\2\1ÄK\0\1\0009\2\3\0015\4\5\0005\5\4\0=\5\6\0045\5\a\0=\5\b\4B\2\2\1K\0\1\0\vindent\1\0\1\venable\2\14highlight\1\0\2\14highlight\0\vindent\0\1\0\1\venable\2\nsetup\28nvim-treesitter.configs\frequire\npcall\0", "config", "nvim-treesitter")
-time([[Config for nvim-treesitter]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.lualine\frequire\0", "config", "lualine.nvim")
 time([[Config for lualine.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+try_loadstring("\27LJ\2\n0\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\21plugins.nvim-cmp\frequire\0", "config", "nvim-cmp")
+time([[Config for nvim-cmp]], false)
 -- Config for: dracula
 time([[Config for dracula]], true)
 try_loadstring("\27LJ\2\n/\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\20plugins.dracula\frequire\0", "config", "dracula")
 time([[Config for dracula]], false)
+-- Config for: actions-preview.nvim
+time([[Config for actions-preview.nvim]], true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28plugins.actions-preview\frequire\0", "config", "actions-preview.nvim")
+time([[Config for actions-preview.nvim]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads

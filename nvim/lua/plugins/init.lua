@@ -51,17 +51,26 @@ return packer.startup(function(use)
 	-- Treesitter for better syntax highlighting
     use({
       "nvim-treesitter/nvim-treesitter",
-      run = function()
-        local ok, install = pcall(require, "nvim-treesitter.install")
-        if ok then install.update({ with_sync = true })() end
-      end,
+      run = ":TSUpdate",
       config = function()
-        local ok, configs = pcall(require, "nvim-treesitter.configs")
+        -- New nvim-treesitter API (v1.0+)
+        local ok, treesitter = pcall(require, "nvim-treesitter")
         if not ok then return end
 
-        configs.setup({
-          highlight = { enable = true },
-          indent = { enable = true },
+        -- Install parsers for common languages
+        treesitter.install({
+          "javascript",
+          "typescript",
+          "tsx",
+          "html",
+          "css",
+          "python",
+          "go",
+          "rust",
+          "lua",
+          "vim",
+          "markdown",
+          "json",
         })
       end,
     })
@@ -71,6 +80,15 @@ return packer.startup(function(use)
 		"neovim/nvim-lspconfig",
 		config = function()
 			require("plugins.lsp")
+		end,
+	})
+
+	-- Code actions preview with Telescope
+	use({
+		"aznhe21/actions-preview.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("plugins.actions-preview")
 		end,
 	})
 	use({
@@ -116,7 +134,7 @@ return packer.startup(function(use)
 	-- Telescope (already Lua-native, replaces ag.vim and bufexplorer)
 	use({
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
+		branch = "master", -- Use latest for Neovim 0.11 compatibility
 		requires = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("plugins.telescope")

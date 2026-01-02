@@ -1,6 +1,9 @@
 -- General settings
 local opt = vim.opt
 
+-- Enable syntax highlighting (required for treesitter)
+vim.cmd("syntax enable")
+
 opt.expandtab = true
 opt.shiftwidth = 4
 opt.tabstop = 4
