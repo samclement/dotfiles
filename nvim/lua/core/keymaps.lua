@@ -8,7 +8,7 @@ vim.g.mapleader = ","
 -- General keymaps
 keymap("n", "<leader>w", ":w!<cr>", opts)
 keymap("n", "<leader>ve", ":edit ~/.config/nvim/init.lua<cr>", opts)
-keymap("n", "<leader>vr", ":source ~/.config/nvim/init.lua<cr>", opts)
+keymap("n", "<leader>vr", ":luafile %<cr>", opts)
 keymap("n", "<leader>k", ":nohlsearch<CR>", opts)
 keymap("n", "<leader>Q", ":bufdo bdelete<cr>", opts)
 
