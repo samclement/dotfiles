@@ -144,3 +144,15 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # television
 eval "$(tv init zsh)"
+
+tvn() {
+  local selected
+  selected="$(tv "${@:-ghq-repos}")" || return
+  [ -n "$selected" ] || return
+
+  if [ -d "$selected" ]; then
+    builtin cd -- "$selected" && nvim -c 'autocmd VimEnter * ++once ++nested Telescope git_files'
+  else
+    nvim "$selected"
+  fi
+}

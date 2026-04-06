@@ -1,5 +1,6 @@
 - clean: ['~']
 - link:
+    ~/.config/television: television
     ~/.config/nvim: nvim
     ~/.zshrc: zsh/.zshrc
     ~/.config/kitty: kitty

@@ -1,0 +1,31 @@
+[metadata]
+name = "tmux-sessions"
+description = "Select and preview tmux sessions"
+
+[source]
+command = "tmux list-sessions -F '#{session_name}'"
+
+[preview]
+command = """
+sh -c '
+session="$1"
+tmux capture-pane -p -J -S -80 -t "${session}:0.0" 2>/dev/null \
+  || tmux list-windows -t "$session" 2>/dev/null
+' sh '{}'
+"""
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+command = """
+sh -c '
+session="$1"
+if [ -n "$TMUX" ]; then
+  tmux switch-client -t "$session"
+else
+  tmux attach-session -t "$session"
+fi
+' sh '{}'
+"""
+mode = "execute"
