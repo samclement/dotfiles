@@ -79,6 +79,13 @@ plugins=(
     zsh-autosuggestions
 )
 
+# zsh-nvm settings: must be set before oh-my-zsh loads the plugin.
+# Lazy-load makes nvm cost ~0 at shell start and initialise on first use;
+# the plugin then owns nvm loading and completion. Do not also source
+# $NVM_DIR/nvm.sh below -- doing both cost ~1.1s on every shell.
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+
 # Guarded so a machine without oh-my-zsh still gets a working shell;
 # ./bootstrap installs it.
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
@@ -131,10 +138,8 @@ export GOPATH="$HOME/go"
 
 # Plugins
 
-# node version manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# node version manager: loaded lazily by the zsh-nvm plugin (see above),
+# which also exports NVM_DIR.
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
