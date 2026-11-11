@@ -1,0 +1,7 @@
+# Template for ~/.config/tmux/tmux.local.conf -- machine-local tmux settings,
+# never tracked.
+#   cp tmux/tmux.local.conf.example ~/.config/tmux/tmux.local.conf
+# Sourced from tmux.conf just above the tpm initialisation.
+
+# set -g default-command /usr/bin/fish
+# set -g status-left-length 60

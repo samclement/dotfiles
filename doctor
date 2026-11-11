@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# Read-only report of what this machine is missing. Never changes anything.
+#
+#   ./doctor          check commands, symlinks and plugin managers
+#   exit 0            everything present
+#   exit 1            something missing (see the gap lines)
+set -uo pipefail
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+gaps=0
+
+gap() {
+    gaps=$((gaps + 1))
+    printf '  %s\n' "$*"
+}
+
+section() { printf '\n%s\n' "$*"; }
+
+section "Commands (packages/tools.txt)"
+while read -r cmd; do
+    [[ -n "${cmd}" && "${cmd}" != \#* ]] || continue
+    if ! command -v "${cmd}" >/dev/null 2>&1; then
+        gap "missing: ${cmd}"
+    fi
+done <"${BASEDIR}/packages/tools.txt"
+
+section "Symlinks (install.conf.yaml targets)"
+# Keep in sync with install.conf.yaml; dotbot owns creating these.
+for target in \
+    "${HOME}/.zshrc" \
+    "${HOME}/.gitconfig" \
+    "${HOME}/.config/nvim" \
+    "${HOME}/.config/kitty" \
+    "${HOME}/.config/tmux/tmux.conf" \
+    "${HOME}/.config/television" \
+    "${HOME}/.config/fish/config.fish"; do
+    if [[ ! -L "${target}" ]]; then
+        gap "not linked: ${target}"
+    elif [[ ! -e "${target}" ]]; then
+        gap "dangling link: ${target} -> $(readlink "${target}")"
+    fi
+done
+
+section "Plugin managers"
+[[ -d "${HOME}/.oh-my-zsh" ]] || gap "missing: oh-my-zsh (run ./bootstrap)"
+[[ -d "${HOME}/.config/tmux/plugins/tpm" ]] || gap "missing: tpm (run ./bootstrap)"
+[[ -d "${XDG_DATA_HOME:-${HOME}/.local/share}/nvim/site/pack/packer/start/packer.nvim" ]] ||
+    gap "missing: packer.nvim (open nvim, or run ./bootstrap)"
+
+section "Local overrides (optional, never tracked)"
+for f in "${HOME}/.zshrc.local" "${HOME}/.gitconfig.local" "${HOME}/.config/tmux/tmux.local.conf"; do
+    [[ -e "${f}" ]] && printf '  present: %s\n' "${f}"
+done
+
+printf '\n'
+if ((gaps > 0)); then
+    printf '%d gap(s) found.\n' "${gaps}"
+    exit 1
+fi
+printf 'All checks passed.\n'

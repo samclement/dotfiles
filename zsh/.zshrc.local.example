@@ -1,0 +1,26 @@
+# Template for ~/.zshrc.local -- machine-local zsh settings, never tracked.
+#   cp zsh/.zshrc.local.example ~/.zshrc.local && chmod 600 ~/.zshrc.local
+# Sourced at the end of ~/.zshrc. Put anything with an absolute path, a
+# secret, or a machine-only tool here instead of editing the tracked file.
+
+# --- Secrets -------------------------------------------------------------
+# Path to an age key; point at wherever this machine keeps it.
+# export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+
+# --- Machine-only tooling ------------------------------------------------
+# A tool installed only on one box: guard it, never assume it.
+# if [ -x "$HOME/.gdrive-downloader/gdl" ]; then
+#   export PATH="$HOME/.gdrive-downloader:$PATH"
+# fi
+
+# Tool-generated completions embed absolute paths; regenerate per machine.
+# if [ -s "$HOME/.bun/_bun" ]; then
+#   source "$HOME/.bun/_bun"
+# fi
+
+# if [ -f "$HOME/.cache/@asyncapi/cli/autocomplete/zsh_setup" ]; then
+#   source "$HOME/.cache/@asyncapi/cli/autocomplete/zsh_setup"
+# fi
+
+# --- Per-host preferences ------------------------------------------------
+# export KUBECONFIG="$HOME/.kube/other-cluster"

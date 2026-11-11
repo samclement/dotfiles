@@ -1,0 +1,19 @@
+# Template for ~/.gitconfig.local -- machine-local git settings, never tracked.
+#   cp git/.gitconfig.local.example ~/.gitconfig.local
+# Included at the end of the tracked config, so these values win.
+
+# Override identity on a work machine.
+# [user]
+# 	email = sam@example.com
+# 	name = Sam Clement
+# 	signingkey = ~/.ssh/id_work.pub
+
+# [commit]
+# 	gpgsign = true
+
+# [gpg]
+# 	format = ssh
+# 	ssh.program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+# [core]
+# 	sshCommand = ssh -i ~/.ssh/id_work

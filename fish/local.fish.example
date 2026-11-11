@@ -1,0 +1,10 @@
+# Template for ~/.config/fish/local.fish -- machine-local fish settings, never
+# tracked.
+#   cp fish/local.fish.example ~/.config/fish/local.fish
+# Sourced at the end of config.fish.
+
+# if type -q pyenv
+#     pyenv init - | source
+# end
+
+# set -gx SOPS_AGE_KEY_FILE "$HOME/.config/sops/age/keys.txt"

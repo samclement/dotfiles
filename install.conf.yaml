@@ -1,17 +1,22 @@
 - clean: ['~']
+
+- defaults:
+    link:
+      create: true
+      relink: true
+
 - link:
     ~/.config/television: television
     ~/.config/nvim: nvim
     ~/.zshrc: zsh/.zshrc
     ~/.config/kitty: kitty
-    ~/.config/fish/config.fish: 
+    # fish ships no config of its own, but a previous machine may have one:
+    # force replaces files here only, never the directory-based links above.
+    ~/.config/fish/config.fish:
         path: fish/config.fish
         force: true
-    ~/.config/fish/functions/fish_user_key_bindings.fish: 
+    ~/.config/fish/functions/fish_user_key_bindings.fish:
         path: fish/functions/fish_user_key_bindings.fish
         force: true
     ~/.config/tmux/tmux.conf: tmux/tmux.conf
     ~/.gitconfig: git/.gitconfig
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]

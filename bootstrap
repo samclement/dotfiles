@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# Installer for everything that lives outside this repo: system packages and
+# the plugin managers the configs expect. Idempotent: safe to re-run.
+#
+#   ./install     link this repo's files into $HOME (no network)
+#   ./bootstrap   install packages and plugin managers (network)
+#   ./doctor      report what is missing (read-only)
+set -euo pipefail
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+log() { printf '\n==> %s\n' "$*"; }
+have() { command -v "$1" >/dev/null 2>&1; }
+
+install_packages() {
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+        if have brew; then
+            log "macOS packages (brew bundle)"
+            brew bundle --file "${BASEDIR}/Brewfile"
+        else
+            log "brew not found; install https://brew.sh then re-run ./bootstrap"
+        fi
+    elif [[ -f /etc/arch-release ]]; then
+        log "Arch packages (pacman)"
+        "${BASEDIR}/packages/arch.sh"
+    else
+        log "No package recipe for this OS; see packages/tools.txt and install by hand"
+    fi
+}
+
+install_omz() {
+    if [[ -d "${HOME}/.oh-my-zsh" ]]; then
+        log "oh-my-zsh already installed"
+        return
+    fi
+    log "oh-my-zsh"
+    # KEEP_ZSHRC: ~/.zshrc is a symlink into this repo; never let the installer replace it.
+    KEEP_ZSHRC=yes RUNZSH=no CHSH=no sh -c \
+        "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+        "" --unattended
+}
+
+install_omz_plugins() {
+    local plugin_dir="${HOME}/.oh-my-zsh/custom/plugins"
+    mkdir -p "${plugin_dir}"
+    while read -r name url; do
+        [[ -n "${name}" ]] || continue
+        if [[ -d "${plugin_dir}/${name}" ]]; then
+            log "omz plugin ${name} already installed"
+        else
+            log "omz plugin ${name}"
+            git clone --depth 1 "${url}" "${plugin_dir}/${name}"
+        fi
+    done <<'PLUGINS'
+zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
+zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting
+zsh-nvm https://github.com/lukechilds/zsh-nvm
+PLUGINS
+}
+
+install_tmux_plugins() {
+    local tpm="${HOME}/.config/tmux/plugins/tpm"
+    if [[ -d "${tpm}" ]]; then
+        log "tpm already installed"
+    else
+        log "tmux plugin manager (tpm)"
+        git clone --depth 1 https://github.com/tmux-plugins/tpm "${tpm}"
+    fi
+    log "tmux plugins"
+    "${tpm}/bin/install_plugins"
+}
+
+install_nvim_plugins() {
+    # PackerSync returns immediately and installs asynchronously, so quit on
+    # PackerComplete instead of trusting +qa. Module-not-found errors printed
+    # during this first run are expected: the plugins do not exist yet.
+    log "neovim plugins (packer bootstraps itself on first start)"
+    nvim --headless "+autocmd User PackerComplete ++once qa" "+PackerSync"
+}
+
+main() {
+    install_packages
+    if have zsh; then
+        install_omz
+        install_omz_plugins
+    fi
+    if have tmux; then
+        install_tmux_plugins
+    fi
+    if have nvim; then
+        install_nvim_plugins
+    fi
+
+    log "Done. Run ./doctor to check for gaps, then restart your shell."
+}
+
+main "$@"

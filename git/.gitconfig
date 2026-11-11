@@ -11,3 +11,8 @@ lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(
 lg = lg1
 [init]
 	defaultBranch = main
+
+# Machine-local overrides, last so they win (git applies the last value).
+# Not tracked. Template: git/.gitconfig.local.example
+[include]
+	path = ~/.gitconfig.local

@@ -1,0 +1,15 @@
+# Command names checked by ./doctor (one per line, blank lines and # ignored).
+# Install sources: Brewfile (macOS), packages/arch.sh (Arch).
+git
+ghq
+zsh
+tmux
+nvim
+go
+eza
+bat
+zoxide
+fzf
+age
+tv
+kitty

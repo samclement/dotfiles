@@ -79,7 +79,9 @@ plugins=(
     zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
+# Guarded so a machine without oh-my-zsh still gets a working shell;
+# ./bootstrap installs it.
+[ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # User configuration
 
@@ -128,7 +130,6 @@ export FZF_BASE="$HOME/.fzf"
 export GOPATH="$HOME/go"
 
 # Plugins
-eval "$(zoxide init zsh)"
 
 # node version manager
 export NVM_DIR="$HOME/.nvm"
@@ -139,11 +140,8 @@ export NVM_DIR="$HOME/.nvm"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# bun completions
-[ -s "/home/sam/.bun/_bun" ] && source "/home/sam/.bun/_bun"
-
 # television
-eval "$(tv init zsh)"
+command -v tv >/dev/null 2>&1 && eval "$(tv init zsh)"
 
 tvn() {
   local selected
@@ -156,3 +154,9 @@ tvn() {
     nvim "$selected"
   fi
 }
+
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+
+# Machine-local settings: absolute paths, secrets, work-only tooling.
+# Never tracked. See zsh/.zshrc.local.example
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
