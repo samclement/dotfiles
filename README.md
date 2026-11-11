@@ -5,16 +5,20 @@ Anything machine-specific lives outside this repo in untracked `*.local` files.
 
 ## New machine
 
+Canonical checkout: `~/ghq/github.com/samclement/dotfiles`, so `ghq list`, `tv ghq-repos`
+and `tvn` all see it.
+
 ```sh
-git clone git@github.com:samclement/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+ghq get --ssh samclement/dotfiles
+cd "$(ghq root)/github.com/samclement/dotfiles"
 ./install     # symlink configs into $HOME (no network)
 ./bootstrap   # install packages + plugin managers (network)
 ./doctor      # read-only: report anything still missing
 ```
 
 Then restart the shell. `./install` and `./bootstrap` are idempotent; run them in either
-order, any number of times.
+order, any number of times. Keep exactly **one** checkout: symlinks are absolute, so a
+second clone turns `$HOME` into a mix of whichever ran `./install` last.
 
 ## What each script owns
 
@@ -60,6 +64,6 @@ identity and signing key win) and each is gitignored. Put absolute paths, secret
 ## Notes
 
 - tmux reads `~/.config/tmux/tmux.conf` on 3.2+. Older tmux ignores it silently.
-- Keep this repo's checkout at `~/dotfiles` or `~/ghq/github.com/samclement/dotfiles` —
-  `install.conf.yaml` links relative to wherever you run it, so two clones produce
-  symlinks pointing at whichever ran last.
+- `install.conf.yaml` links relative to wherever you run it and stores absolute paths,
+  so two clones of this repo produce a split `$HOME`. `relink: true` makes the last run
+  win deterministically, but that only removes the ambiguity, not the mistake.
