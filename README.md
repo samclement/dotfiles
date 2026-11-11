@@ -42,7 +42,13 @@ cp zsh/.zshrc.local.example        ~/.zshrc.local
 cp git/.gitconfig.local.example    ~/.gitconfig.local
 cp fish/local.fish.example         ~/.config/fish/local.fish
 cp tmux/tmux.local.conf.example    ~/.config/tmux/tmux.local.conf
+mkdir -p ~/.config/kitty.local.d
+cp kitty/local.conf.example        ~/.config/kitty.local.d/macos.conf
 ```
+
+kitty is the one component whose local file lives in a sibling drop-in directory
+(`~/.config/kitty.local.d/`) rather than inside the config dir, because
+`~/.config/kitty` is itself the symlink into this repo.
 
 Each is sourced/included by the tracked config (git's include comes *last*, so a local
 identity and signing key win) and each is gitignored. Put absolute paths, secrets

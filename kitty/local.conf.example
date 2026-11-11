@@ -1,0 +1,13 @@
+# Template for drop-in files in ~/.config/kitty.local.d/ -- machine-local,
+# never tracked. kitty.conf ends with:
+#   globinclude ../kitty.local.d/*.conf      (i.e. ~/.config/kitty.local.d/)
+#
+#   mkdir -p ~/.config/kitty.local.d
+#   cp kitty/local.conf.example ~/.config/kitty.local.d/macos.conf
+#
+# macOS-only options (kitty ignores them with a warning elsewhere):
+# background_blur 32
+# hide_window_decorations yes
+#
+# Per-host preferences:
+# font_size 14.0
