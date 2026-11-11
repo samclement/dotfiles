@@ -1,3 +1,9 @@
+-- Guarded: see colours.lua. LSP needs the whole completion stack, so skip the
+-- entire block while any of it is missing rather than half-configuring it.
+for _, mod in ipairs({ 'cmp', 'cmp_nvim_lsp', 'mason', 'mason-lspconfig' }) do
+	if not pcall(require, mod) then return end
+end
+
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 

@@ -1,7 +1,10 @@
-local actions = require("telescope.actions")
-local builtin = require("telescope.builtin")
+-- Guarded: see colours.lua.
+local ok_actions, actions = pcall(require, "telescope.actions")
+local ok_builtin, builtin = pcall(require, "telescope.builtin")
+local ok_telescope, telescope = pcall(require, "telescope")
+if not (ok_actions and ok_builtin and ok_telescope) then return end
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		mappings = {
 			i = {

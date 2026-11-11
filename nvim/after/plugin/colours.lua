@@ -1,4 +1,9 @@
-require('catppuccin').setup({
+-- Guarded: a missing plugin (fresh machine, or before packer finished
+-- installing) should not error at startup.
+local ok, catppuccin = pcall(require, 'catppuccin')
+if not ok then return end
+
+catppuccin.setup({
     disable_background = true
 })
 
