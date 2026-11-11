@@ -59,8 +59,6 @@ identity and signing key win) and each is gitignored. Put absolute paths, secret
 
 ## Notes
 
-- `nvim/plugins/*.vim` is legacy vimscript (coc, nerdtree, airline) from before the Lua
-  rewrite. Nothing sources it; kept only as reference.
 - tmux reads `~/.config/tmux/tmux.conf` on 3.2+. Older tmux ignores it silently.
 - Keep this repo's checkout at `~/dotfiles` or `~/ghq/github.com/samclement/dotfiles` —
   `install.conf.yaml` links relative to wherever you run it, so two clones produce
