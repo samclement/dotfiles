@@ -33,6 +33,7 @@ for target in \
     "${HOME}/.config/kitty" \
     "${HOME}/.config/tmux/tmux.conf" \
     "${HOME}/.config/television" \
+    "${HOME}/.pi/agent/AGENTS.md" \
     "${HOME}/.config/fish/config.fish"; do
     if [[ ! -L "${target}" ]]; then
         gap "not linked: ${target}"

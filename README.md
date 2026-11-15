@@ -65,6 +65,7 @@ identity and signing key win) and each is gitignored. Put absolute paths, secret
 | `kitty/` | `~/.config/kitty` |
 | `fish/` | `~/.config/fish/config.fish` + key bindings |
 | `television/` | `~/.config/television` (channels, config) |
+| `pi/AGENTS.md` | `~/.pi/agent/AGENTS.md` (global agent working agreements) |
 | `scripts/` | not linked; called by absolute path where needed |
 
 ## Notes

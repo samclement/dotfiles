@@ -19,4 +19,8 @@
         path: fish/functions/fish_user_key_bindings.fish
         force: true
     ~/.config/tmux/tmux.conf: tmux/tmux.conf
+    # pi writes ~/.pi/agent itself; link only the instructions file, replacing a local copy.
+    ~/.pi/agent/AGENTS.md:
+        path: pi/AGENTS.md
+        force: true
     ~/.gitconfig: git/.gitconfig
