@@ -23,4 +23,11 @@
     ~/.pi/agent/AGENTS.md:
         path: pi/AGENTS.md
         force: true
+    # Prompts are linked one by one: the others in ~/.pi/agent/prompts are local.
+    ~/.pi/agent/prompts/task.md:
+        path: pi/prompts/task.md
+        force: true
+    ~/.pi/agent/prompts/conduct.md:
+        path: pi/prompts/conduct.md
+        force: true
     ~/.gitconfig: git/.gitconfig
