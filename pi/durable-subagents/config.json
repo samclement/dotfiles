@@ -1,0 +1,7 @@
+{
+  "pools": {
+    "fast": ["deepseek/deepseek-flash", "claude-bridge/claude-haiku-5-5"],
+    "strong": ["claude-bridge/claude-opus-5-5", "openai/gpt-6.1-sol"],
+    "independent": ["openai/gpt-6.1-sol", "claude-bridge/claude-sonnet-5-5"]
+  }
+}

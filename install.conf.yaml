@@ -30,4 +30,7 @@
     ~/.pi/agent/prompts/conduct.md:
         path: pi/prompts/conduct.md
         force: true
+    ~/.pi/durable-subagents/config.json:
+        path: pi/durable-subagents/config.json
+        force: true
     ~/.gitconfig: git/.gitconfig
