@@ -23,12 +23,16 @@
     ~/.pi/agent/AGENTS.md:
         path: pi/AGENTS.md
         force: true
-    # Prompts are linked one by one: the others in ~/.pi/agent/prompts are local.
+    # Prompts are linked one by one: the others in ~/.pi/agent/prompts are local. The tk prompts are
+    # owned by swhurl-astronaut, next to tk itself.
     ~/.pi/agent/prompts/task.md:
-        path: pi/prompts/task.md
+        path: ~/ghq/github.com/samclement/swhurl-astronaut/agent-cli/prompts/task.md
         force: true
     ~/.pi/agent/prompts/conduct.md:
-        path: pi/prompts/conduct.md
+        path: ~/ghq/github.com/samclement/swhurl-astronaut/agent-cli/prompts/conduct.md
+        force: true
+    ~/.pi/agent/extensions/cap-output:
+        path: ~/ghq/github.com/samclement/swhurl-astronaut/agent-cli/pi/cap-output
         force: true
     ~/.pi/durable-subagents/config.json:
         path: pi/durable-subagents/config.json
