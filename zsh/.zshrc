@@ -140,6 +140,12 @@ export GOPATH="$HOME/go"
 
 # node version manager: loaded lazily by the zsh-nvm plugin (see above),
 # which also exports NVM_DIR.
+# Put nvm's default Node on PATH without loading nvm, so scripts whose
+# shebang is `env node` (pi) work in a new shell. The default alias names a
+# version prefix (v24); take the newest installed match, numerically sorted.
+_nvm_default=( $HOME/.nvm/versions/node/$(<$HOME/.nvm/alias/default 2>/dev/null)*(N/nOn[1]) )
+[ -n "$_nvm_default" ] && export PATH="$_nvm_default/bin:$PATH"
+unset _nvm_default
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
